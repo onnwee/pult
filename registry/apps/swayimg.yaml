@@ -1,0 +1,32 @@
+# Checked on Arch, swayimg 5.7, 2026-11-12 (subculture-collective/subarchy#78):
+# version regex, and that swayimg, run in a headless sway, ran the dofile()
+# line at the end of $XDG_CONFIG_HOME/swayimg/init.lua and drew the viewer
+# and gallery in the theme's colours. Since 5.0 the config is a Lua script
+# (CONFIG.md, swayimg 5.7); the colour fields used here arrived in 5.5.
+# Lua's dofile() takes a path, not one relative to the config, so the line
+# names the owned file in full. Older versions read an INI file and are left
+# alone. swayimg reads its config when it starts, so there is no reload.
+schema: 1
+id: swayimg
+name: swayimg
+homepage: https://github.com/artemsen/swayimg
+platforms: [linux]
+tier: 1
+
+detect:
+  binaries: [swayimg]
+  version:
+    argv: [swayimg, --version]
+    regex: 'swayimg version ([0-9.]+[0-9])'
+
+config:
+  paths:
+    linux: ["$XDG_CONFIG_HOME/swayimg/init.lua"]
+
+integrations:
+  - method: include
+    versions: ">=5.5"
+    template: swayimg/pult.lua.mustache
+    owned_file: pult.lua
+    line: 'dofile("{theme_file}")'
+    position: end

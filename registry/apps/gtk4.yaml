@@ -2,9 +2,11 @@
 # GTK 4 reads ~/.config/gtk-4.0/gtk.css when an app starts; `@import` at
 # the top pulls in Pult's file, as Omarchy's glass mode does with its own
 # stylesheet. libadwaita's named colours (window_bg_color, accent_bg_color
-# and the rest) recolour libadwaita apps; the Adwaita names cover GTK 4
-# apps without libadwaita. Running apps keep their colours until they
-# restart, so there is no reload.
+# and the rest) recolour libadwaita apps. GTK 4 apps without libadwaita
+# follow them under a theme drawn from them, such as adw-gtk3; GTK 4's
+# built-in Adwaita keeps its own (checked 2026-11-12, subarchy#77, under
+# Xvfb). Running apps keep their colours until they restart, so there is no
+# reload.
 schema: 1
 id: gtk4
 name: GTK 4 and libadwaita apps

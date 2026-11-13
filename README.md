@@ -35,10 +35,10 @@ Website and user docs: <https://pult.subcult.tv>
   a theme's resolved palette, or render any Mustache template with it.
 
 Supported apps: Alacritty, Ghostty, kitty, foot, iTerm2, fish, Starship, tmux,
-Zellij, bat, btop, cava, delta, eza, fzf, Helix, lazygit, lsd, Yazi, GTK 3,
-GTK 4, and the Subarchy shell, lock screen and Hyprland colours. WezTerm and
-Terminal.app get instructions instead of edits. `pult list` shows what it
-found on your machine. The app definitions are in [registry/apps](registry/apps).
+Zellij, bat, btop, cava, delta, eza, fzf, Helix, lazygit, lsd, swayimg, Yazi,
+GTK 3, GTK 4, KDE apps, and the Subarchy shell, lock screen and Hyprland
+colours. WezTerm and Terminal.app get instructions instead of edits. `pult
+list` shows what it found on your machine. The app definitions are in [registry/apps](registry/apps).
 
 ## Install
 

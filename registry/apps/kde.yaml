@@ -1,0 +1,31 @@
+# Checked on Arch, Dolphin 26.08.3 with KConfig 6.31, outside Plasma,
+# 2026-11-12 (subculture-collective/subarchy#77): KDE apps (Dolphin,
+# Okular, Ark) take their colours from a colour scheme, not from the Qt
+# platform theme. Outside Plasma, KColorSchemeManager applies BreezeDark or
+# BreezeLight unless kdeglobals names a scheme in [UiSettings] ColorScheme
+# (kcolorscheme, src/kcolorschememanager.cpp); schemes are the .colors files
+# under ~/.local/share/color-schemes, and the ID is the file name. Pult owns
+# Pult.colors there; selecting it is left to the system (Subarchy ships
+# [UiSettings] ColorScheme=Pult in /etc/xdg/kdeglobals) or to the user (the
+# line in ~/.config/kdeglobals, or System Settings in Plasma). With Dolphin
+# run under Xvfb, the window and view took the palette's base and mantle.
+# kreadconfig6 comes with KConfig, which every KDE Frameworks 6 app pulls
+# in. Apps read the scheme when they start, so there is no reload.
+schema: 1
+id: kde
+name: KDE apps
+homepage: https://develop.kde.org/frameworks/
+platforms: [linux]
+tier: 1
+
+detect:
+  binaries: [kreadconfig6]
+
+config:
+  paths:
+    linux: ["$HOME/.local/share/color-schemes/Pult.colors"]
+
+integrations:
+  - method: owned
+    template: kde/Pult.colors.mustache
+    target: Pult.colors
